@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080912">
+<title>NEXV PRANK — Ultimate</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;color:#fff;font-family:Arial,sans-serif;
+ background:radial-gradient(ellipse at 75% 5%,#30204c,transparent 40%),
+ radial-gradient(ellipse at 10% 70%,#142c4b,transparent 40%),#080912;
+ overflow-x:hidden
+}
+body:before{
+ content:"";position:fixed;inset:0;pointer-events:none;
+ background-image:linear-gradient(#ffffff08 1px,transparent 1px),
+ linear-gradient(90deg,#ffffff08 1px,transparent 1px);
+ background-size:45px 45px
+}
+.wrap{width:min(1150px,92%);margin:auto}
+nav{height:80px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff18}
+.brand{font-weight:1000;letter-spacing:5px;font-size:19px}
+.brand span{color:#a58aff}
+.navtag{font-size:10px;letter-spacing:3px;color:#a7a9c0}
+.hero{
+ min-height:650px;display:grid;grid-template-columns:1fr 1fr;
+ align-items:center;gap:30px;padding:55px 0
+}
+.eyebrow{font-size:11px;letter-spacing:4px;color:#70e5ff;font-weight:bold}
+h1{font-size:clamp(55px,8vw,95px);line-height:.9;letter-spacing:-6px;margin:25px 0}
+h1 span{background:linear-gradient(100deg,#fff,#b99aff,#ff547d);color:transparent;background-clip:text}
+.desc{max-width:450px;color:#aeb3ca;line-height:1.8;font-size:15px}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+button{cursor:pointer;font-weight:bold;border:0}
+.btn{padding:16px 23px;border-radius:13px;font-size:12px;transition:.25s}
+.primary{background:linear-gradient(110deg,#ff416d,#925dff);color:white;box-shadow:0 10px 35px #a34cff44}
+.primary:hover{transform:translateY(-4px);box-shadow:0 15px 45px #a34cff77}
+.secondary{background:#ffffff0b;color:white;border:1px solid #ffffff25}
+.secondary:hover{background:#ffffff19}
+.smallnote{font-size:10px;color:#777f9d;margin-top:20px}
+.scene{height:450px;position:relative;display:grid;place-items:center}
+.orbit{position:absolute;width:350px;height:350px;border:1px solid #a68bff40;border-radius:50%;transform:rotateX(65deg);box-shadow:0 0 70px #865cff22}
+.glow{position:absolute;width:250px;height:250px;background:#865cff55;filter:blur(70px);border-radius:50%}
+.bagstage{position:relative;width:220px;height:270px;animation:float 4s ease-in-out infinite}
+.rope{position:absolute;top:-115px;left:50%;width:3px;height:130px;background:#c6b58e;transform:rotate(7deg)}
+.bag{position:absolute;top:20px;left:10px;width:200px;height:225px;
+ background:linear-gradient(110deg,#fff4d9,#c7b99e 55%,#83735e);
+ border-radius:43% 43% 30% 30%;clip-path:polygon(15% 0,85% 0,100% 15%,92% 100%,8% 100%,0 15%);
+ box-shadow:inset -20px -10px 30px #0005,0 25px 50px #0008}
+.bag:before{content:"NEXV";position:absolute;top:90px;left:0;right:0;text-align:center;color:#50463d;font-size:27px;font-weight:1000;letter-spacing:4px}
+.bag:after{content:"FLOUR";position:absolute;top:125px;left:0;right:0;text-align:center;color:#726252;font-size:11px;letter-spacing:8px}
+.knot{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:45px;height:20px;background:#b5a487;border-radius:50%}
+.scene-label{position:absolute;bottom:10px;font-size:10px;color:#8f94b0;letter-spacing:3px}
+@keyframes float{50%{transform:translateY(-18px) rotate(3deg)}}
+.section{border-top:1px solid #ffffff18;padding:65px 0}
+h2{font-size:34px;letter-spacing:-2px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.card{padding:23px;border:1px solid #ffffff18;border-radius:18px;background:#ffffff08}
+.card h3{font-size:15px}.card p{font-size:12px;line-height:1.7;color:#aeb3ca}
+footer{padding:30px 0;color:#777f9d;font-size:10px;letter-spacing:2px;border-top:1px solid #ffffff18}
+#show{display:none;position:fixed;inset:0;background:#05050a;z-index:10;overflow:hidden}
+#show.active{display:block}
+.top{position:absolute;top:20px;left:20px;right:20px;display:flex;justify-content:space-between;z-index:5}
+.close{padding:11px 15px;background:#ffffff16;color:white;border:1px solid #ffffff30;border-radius:10px}
+.status{position:absolute;top:18%;width:100%;text-align:center;font-size:11px;letter-spacing:4px;color:#aaaec4}
+.flying{position:absolute;top:-40%;left:50%;transform:translateX(-50%);font-size:180px;filter:drop-shadow(0 25px 30px #000)}
+.flying.go{animation:throw 2.1s cubic-bezier(.2,.75,.25,1) forwards}
+@keyframes throw{
+ 0%{top:-40%;transform:translateX(-50%) rotate(-20deg) scale(.3)}
+ 65%{top:35%;transform:translateX(-50%) rotate(15deg) scale(1.2)}
+ 100%{top:48%;transform:translateX(-50%) rotate(0) scale(1.5)}
+}
+.powder{position:absolute;inset:0;opacity:0;pointer-events:none;background:radial-gradient(ellipse at center,#fff 0,#f5f0e5dd 15%,#e5e2df88 35%,transparent 70%)}
+.powder.burst{animation:cloud 1.5s ease-out}
+@keyframes cloud{25%{opacity:1}100%{opacity:0;transform:scale(1.8)}}
+.blackout{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none}
+.blackout.on{animation:dark .8s forwards}
+@keyframes dark{to{opacity:1}}
+.reveal{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;opacity:0;transform:scale(.8);transition:1s}
+.reveal.show{opacity:1;transform:scale(1)}
+.reveal h2{font-size:clamp(35px,8vw,75px);color:#ff557b;text-shadow:0 0 40px #ff416d88}
+.reveal p{font-size:11px;letter-spacing:4px;color:#aaaec4}
+@media(max-width:750px){
+ .hero{grid-template-columns:1fr;padding-top:25px}
+ .scene{height:330px;grid-row:1}.hero-copy{grid-row:2}
+ .orbit{width:280px;height:280px}
+ .cards{grid-template-columns:1fr}
+ .navtag{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+ <div class="brand">NEXV <span>STUDIO</span></div>
+ <div class="navtag">INTERACTIVE EXPERIENCE / 001</div>
+</nav>
+
+<main>
+<section class="hero">
+ <div class="hero-copy">
+  <div class="eyebrow">⚡ SPECIAL SCREEN EXPERIENCE</div>
+  <h1>THE BIG<br><span>FLOUR</span><br>PRANK.</h1>
+  <p class="desc">Небольшой экранный хаос с большим эффектом. Запусти сцену, дождись появления мешка и смотри, что произойдёт дальше.</p>
+  <div class="buttons">
+   <button class="btn primary" id="start">▶ ЗАПУСТИТЬ РОЗЫГРЫШ</button>
+   <a class="btn secondary" href="#features">УЗНАТЬ БОЛЬШЕ ↓</a>
+  </div>
+  <div class="smallnote">БЕЗОПАСНЫЙ ЭКРАННЫЙ ЭФФЕКТ · НИЧЕГО НЕ УДАЛЯЕТ</div>
+ </div>
+ <div class="scene">
+  <div class="glow"></div><div class="orbit"></div>
+  <div class="bagstage">
+   <div class="rope"></div><div class="knot"></div><div class="bag"></div>
+  </div>
+  <div class="scene-label">OBJECT DETECTED · FLOUR DELIVERY</div>
+ </div>
+</section>
+
+<section class="section" id="features">
+ <div class="eyebrow">WHAT HAPPENS</div>
+ <h2>Сцена по секундам</h2>
+ <div class="cards">
+  <div class="card"><h3>🪢 01 / Приближение</h3><p>Мешок на верёвке появляется сверху и стремительно летит к зрителю.</p></div>
+  <div class="card"><h3>☁️ 02 / Облако муки</h3><p>В момент столкновения экран заполняет яркое белое облако.</p></div>
+  <div class="card"><h3>◼ 03 / Финал</h3><p>Затемнение сменяется надписью «ТЕБЯ ПОЙМАЛИ!» и кнопкой повтора.</p></div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="eyebrow">BUILT FOR FUN</div>
+ <h2>Розыгрыш, а не вирус.</h2>
+ <p class="desc">NEXV PRANK — браузерная сцена. Она не блокирует устройство, не меняет настройки и не получает доступ к личным данным.</p>
+</section>
+</main>
+<footer>© 2026 NEXV STUDIO · MADE FOR FUN</footer>
+</div>
+
+<div id="show">
+ <div class="top">
+  <b>NEXV <span style="color:#ff557b">PRANK</span></b>
+  <button class="close" id="close">✕ ЗАКРЫТЬ</button>
+ </div>
+ <div class="status" id="status">ОБЪЕКТ ОБНАРУЖЕН · ПРИБЛИЖЕНИЕ</div>
+ <div class="flying" id="flying">🎒</div>
+ <div class="powder" id="powder"></div>
+ <div class="blackout" id="blackout"></div>
+ <div class="reveal" id="reveal">
+  <h2>ТЕБЯ ПОЙМАЛИ!</h2>
+  <p>ЭТО БЫЛ NEXV PRANK</p>
+  <div class="buttons">
+   <button class="btn primary" id="again">↻ ПОВТОРИТЬ</button>
+   <button class="btn secondary" id="exit">ВЕРНУТЬСЯ НА САЙТ</button>
+  </div>
+ </div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+let timers=[];
+function later(fn,ms){timers.push(setTimeout(fn,ms))}
+function reset(){
+ timers.forEach(clearTimeout);timers=[];
+ $('flying').classList.remove('go');
+ $('powder').classList.remove('burst');
+ $('blackout').classList.remove('on');
+ $('reveal').classList.remove('show');
+ $('flying').textContent='🎒';
+ $('status').textContent='ОБЪЕКТ ОБНАРУЖЕН · ПРИБЛИЖЕНИЕ';
+}
+function run(){
+ reset();
+ $('show').classList.add('active');
+ document.body.style.overflow='hidden';
+ void $('flying').offsetWidth;
+ $('flying').classList.add('go');
+ later(()=>{
+  $('status').textContent='СТОЛКНОВЕНИЕ!';
+  $('flying').textContent='💥';
+  $('powder').classList.add('burst');
+ },2050);
+ later(()=>{
+  $('blackout').classList.add('on');
+  $('status').textContent='SIGNAL LOST';
+ },2800);
+ later(()=>{
+  $('blackout').classList.remove('on');
+  $('reveal').classList.add('show');
+  $('status').textContent='СЦЕНА ЗАВЕРШЕНА';
+ },4300);
+}
+function close(){
+ reset();
+ $('show').classList.remove('active');
+ document.body.style.overflow='';
+}
+$('start').onclick=run;
+$('again').onclick=run;
+$('close').onclick=close;
+$('exit').onclick=close;
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape'&&$('show').classList.contains('active'))close();
+});
+</script>
+</body>
+</html>
